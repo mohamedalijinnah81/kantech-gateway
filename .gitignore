@@ -1,0 +1,9 @@
+# Logs directory and its contents
+Logs/
+Logs/**
+*.log
+
+# Build and IDE directories
+.vs/
+obj/
+bin/
