@@ -1,0 +1,68 @@
+2025-10-22 10:20:52 [INFO] Scheduler started
+2025-10-22 10:20:56 [INFO] Scheduler started
+2025-10-22 10:21:19 [ERROR] [] run failed :: System.IO.IOException: The process cannot access the file 'D:\Kantech\Inbound\Reactivate\test.csv' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at KantechGatewayApp.KantechGatewayApp.Infrastructure.CsvUtil.ReadRows(String filePath, Char delimiter, Boolean hasHeader) in D:\Kantech\KantechGatewayApp\Infrastructure\CsvUtil.vb:line 8
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 79
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67
+2025-10-22 10:21:44 [INFO] [Reactivate] card=12345 emp=EMP001 -> reactivated
+2025-10-22 10:21:44 [INFO] [Reactivate] card=67890 emp=EMP002 -> reactivated
+2025-10-22 10:21:44 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 12:21:23 [INFO] Scheduler started
+2025-10-22 12:21:31 [ERROR] [] run failed :: System.ApplicationException: Missing required field 'Card ID' in test2.csv
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 83
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67
+2025-10-22 12:22:35 [ERROR] [] run failed :: System.ApplicationException: Missing required field 'Card ID' in test2.csv
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 83
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67
+2025-10-22 12:22:41 [ERROR] [] run failed :: System.ApplicationException: Missing required field 'Card ID' in test2.csv
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 83
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67
+2025-10-22 12:23:40 [INFO] Scheduler started
+2025-10-22 12:23:42 [ERROR] [] run failed :: System.IO.IOException: The process cannot access the file 'D:\Kantech\Inbound\Reactivate\test.csv' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at KantechGatewayApp.KantechGatewayApp.Infrastructure.CsvUtil.ReadRows(String filePath, Char delimiter, Boolean hasHeader) in D:\Kantech\KantechGatewayApp\Infrastructure\CsvUtil.vb:line 8
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 79
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67
+2025-10-22 12:24:01 [INFO] [Reactivate] card=12345 emp=EMP001 -> reactivated
+2025-10-22 12:24:01 [INFO] [Reactivate] card=67890 emp=EMP002 -> reactivated
+2025-10-22 12:24:01 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 16:08:10 [INFO] Scheduler started
+2025-10-22 16:08:13 [INFO] [Deactivate] card=12345 emp=EMP001 -> deactivated
+2025-10-22 16:08:13 [INFO] [Deactivate] card=67890 emp=EMP002 -> deactivated
+2025-10-22 16:08:13 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 16:34:42 [INFO] [Resignee] card=12345 emp=EMP001 -> access removed
+2025-10-22 16:34:42 [INFO] [Resignee] card=67890 emp=EMP002 -> access removed
+2025-10-22 16:34:42 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 16:47:50 [INFO] [ProfileUpdate] emp=EMP001 dept=IT -> profile updated
+2025-10-22 16:47:50 [INFO] [ProfileUpdate] emp=EMP002 dept=HR -> profile updated
+2025-10-22 16:47:50 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 17:04:37 [INFO] [AccessUpdate] emp=EMP001 card=12345 level=employee site=eleware -> access updated
+2025-10-22 17:04:37 [INFO] [AccessUpdate] emp=EMP002 card=67890 level=employee site=eleware -> access updated
+2025-10-22 17:04:37 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 17:09:29 [INFO] [NewProfile] emp=EMP001 name=Jinnah -> profile created
+2025-10-22 17:09:29 [INFO] [NewProfile] emp=EMP002 name=Siva -> profile created
+2025-10-22 17:09:29 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 17:11:32 [INFO] [NewAccess] emp=EMP001 card=12345 -> access created
+2025-10-22 17:11:32 [INFO] [NewAccess] emp=EMP002 card=67890 -> access created
+2025-10-22 17:11:32 [INFO] [] test.csv -> OK:2 ERR:0
+2025-10-22 17:13:17 [ERROR] [] run failed :: System.IO.IOException: The process cannot access the file 'D:\Kantech\Inbound\Daily update\test.csv' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at KantechGatewayApp.KantechGatewayApp.Infrastructure.CsvUtil.ReadRows(String filePath, Char delimiter, Boolean hasHeader) in D:\Kantech\KantechGatewayApp\Infrastructure\CsvUtil.vb:line 8
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.ProcessOneFile(String filePath) in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 79
+   at KantechGatewayApp.KantechGatewayApp.Jobs.BaseProcessor.RunOnce() in D:\Kantech\KantechGatewayApp\Jobs\BaseProcessor.vb:line 67

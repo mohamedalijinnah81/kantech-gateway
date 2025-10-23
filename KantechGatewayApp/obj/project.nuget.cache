@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rh1L+i7SqNo=",
+  "success": true,
+  "projectFilePath": "D:\\Kantech\\KantechGatewayApp\\KantechGatewayApp.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eleware\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.10\\system.diagnostics.eventlog.9.0.10.nupkg.sha512",
+    "C:\\Users\\Eleware\\.nuget\\packages\\system.serviceprocess.servicecontroller\\9.0.10\\system.serviceprocess.servicecontroller.9.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
