@@ -7,3 +7,5 @@ Logs/**
 .vs/
 obj/
 bin/
+Completed/
+Inbound/

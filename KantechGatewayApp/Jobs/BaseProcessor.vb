@@ -12,7 +12,7 @@ Namespace KantechGatewayApp.Jobs
 
         Private _source As String
         Private _target As String
-        Private _logSub As String
+        Protected _logSub As String
         Private _schedule As String
         Private _requiredFields As String()
 
@@ -68,7 +68,7 @@ Namespace KantechGatewayApp.Jobs
                 Next
                 _LastResult = $"Processed {files.Length} file(s)"
             Catch ex As Exception
-                Infrastructure.Logger.Error($"[{Key}] run failed", ex)
+                Infrastructure.Logger.Error($"[{Key}] run failed", ex, _logSub)
                 _LastResult = $"Error: {ex.Message}"
             End Try
         End Sub
@@ -91,7 +91,7 @@ Namespace KantechGatewayApp.Jobs
                     ok += 1
                 Catch ex As Exception
                     err += 1
-                    Infrastructure.Logger.Error($"[{Key}] row failed: {String.Join(", ", r.Select(Function(kv) kv.Key & "=" & kv.Value))}", ex)
+                    Infrastructure.Logger.Error($"[{Key}] row failed: {String.Join(", ", r.Select(Function(kv) kv.Key & "=" & kv.Value))}", ex, _logSub)
                 End Try
             Next
 
@@ -102,7 +102,7 @@ Namespace KantechGatewayApp.Jobs
                 KantechGatewayApp.Infrastructure.FileUtil.SafeMove(filePath, KantechGatewayApp.Infrastructure.FileUtil.Combine(errDir, Key))
             End If
 
-            Infrastructure.Logger.Info($"[{Key}] {Path.GetFileName(filePath)} -> OK:{ok} ERR:{err}")
+            Infrastructure.Logger.Info($"[{Key}] {Path.GetFileName(filePath)} -> OK:{ok} ERR:{err}", _logSub)
         End Sub
 
         Protected MustOverride Sub HandleRow(row As Dictionary(Of String, String))
