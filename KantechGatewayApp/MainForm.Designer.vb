@@ -1,3 +1,4 @@
+Imports System.Drawing
 Imports System.Windows.Forms
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
@@ -5,7 +6,7 @@ Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -22,7 +23,7 @@ Partial Class MainForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.btnStart = New System.Windows.Forms.Button()
         Me.btnStop = New System.Windows.Forms.Button()
@@ -39,6 +40,7 @@ Partial Class MainForm
         Me.btnStart.Size = New System.Drawing.Size(90, 30)
         Me.btnStart.TabIndex = 0
         Me.btnStart.Text = "Start"
+        Me.btnStart.ForeColor = Color.White
         Me.btnStart.UseVisualStyleBackColor = True
         '
         'btnRunNow
@@ -48,7 +50,9 @@ Partial Class MainForm
         Me.btnRunNow.Size = New System.Drawing.Size(90, 30)
         Me.btnRunNow.TabIndex = 2
         Me.btnRunNow.Text = "Run Now"
-        Me.btnRunNow.UseVisualStyleBackColor = True
+        Me.btnRunNow.ForeColor = Color.White
+        Me.btnRunNow.BackColor = Color.RoyalBlue
+        Me.btnRunNow.UseVisualStyleBackColor = False
         '
         'lstJobs
         '

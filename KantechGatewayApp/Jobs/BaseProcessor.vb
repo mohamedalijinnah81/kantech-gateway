@@ -9,6 +9,7 @@ Namespace KantechGatewayApp.Jobs
         Public ReadOnly Property ScheduleName As String Implements IJobProcessor.ScheduleName
         Public ReadOnly Property LastRunUtc As Date Implements IJobProcessor.LastRunUtc
         Public ReadOnly Property LastResult As String Implements IJobProcessor.LastResult
+        Public ReadOnly Property Status As String Implements IJobProcessor.Status
 
         Private _source As String
         Private _target As String
@@ -58,15 +59,25 @@ Namespace KantechGatewayApp.Jobs
                 _LastRunUtc = Date.UtcNow
                 Dim pattern = Infrastructure.JobManager.Config("File.Pattern", "*.csv")
                 Dim files = Directory.GetFiles(_source, pattern)
+                Dim processedCount As Integer = 0
+                Dim status As String = ""
                 If files.Length = 0 Then
                     _LastResult = "No files"
                     Return
                 End If
 
                 For Each f In files
-                    ProcessOneFile(f)
+                    Try
+                        ProcessOneFile(f)
+                        processedCount += 1
+                        ' Update progress status after each file
+                        status = $"{processedCount} out of {files.Length} processed"
+                    Catch ex As Exception
+                        Infrastructure.Logger.Error($"[{Key}] failed to process file {f}", ex, _logSub)
+                    End Try
                 Next
                 _LastResult = $"Processed {files.Length} file(s)"
+                _Status = status
             Catch ex As Exception
                 Infrastructure.Logger.Error($"[{Key}] run failed", ex, _logSub)
                 _LastResult = $"Error: {ex.Message}"

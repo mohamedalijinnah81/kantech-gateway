@@ -2,6 +2,7 @@ Imports System.ComponentModel
 Imports KantechGatewayApp.Infrastructure
 Imports KantechGatewayApp.Jobs
 Imports System.Windows.Forms
+Imports System.Drawing
 
 Public Class MainForm
     Private _mgr As KantechGatewayApp.Infrastructure.JobManager
@@ -32,6 +33,7 @@ Public Class MainForm
             _mgr.Start()
             _isRunning = True
             btnStart.Text = "Stop"
+            btnStart.BackColor = Color.Red
             KantechGatewayApp.Infrastructure.Logger.Info("Scheduler started automatically")
             RefreshGrid()
         Catch ex As Exception
@@ -45,6 +47,7 @@ Public Class MainForm
             _mgr.Stop()
             _isRunning = False
             btnStart.Text = "Start"
+            btnStart.BackColor = Color.Green
             KantechGatewayApp.Infrastructure.Logger.Info("Scheduler stopped")
             RefreshGrid()
         Catch ex As Exception
