@@ -14,7 +14,7 @@ Namespace KantechGatewayApp.Infrastructure
             EnsureDir(destDir)
             Dim dest = Path.Combine(destDir, Path.GetFileName(src))
             If File.Exists(dest) Then
-                Dim stamped = Path.Combine(destDir, $"{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:yyyyMMdd_HHmmssfff}{Path.GetExtension(src)}")
+                Dim stamped = Path.Combine(destDir, $"{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:ddMMyyyy_HHmmssfff}{Path.GetExtension(src)}")
                 File.Move(src, stamped)
             Else
                 File.Move(src, dest)
