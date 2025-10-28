@@ -2,10 +2,10 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="MainForm.vb">
+    <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Service\KantechGatewayService.vb">
+    <Compile Update="Service\KantechGatewayService.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
