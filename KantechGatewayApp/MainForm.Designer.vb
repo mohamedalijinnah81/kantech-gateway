@@ -41,15 +41,6 @@ Partial Class MainForm
         Me.btnStart.Text = "Start"
         Me.btnStart.UseVisualStyleBackColor = True
         '
-        'btnStop
-        '
-        Me.btnStop.Location = New System.Drawing.Point(108, 12)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(90, 30)
-        Me.btnStop.TabIndex = 1
-        Me.btnStop.Text = "Stop"
-        Me.btnStop.UseVisualStyleBackColor = True
-        '
         'btnRunNow
         '
         Me.btnRunNow.Location = New System.Drawing.Point(204, 12)
@@ -88,7 +79,6 @@ Partial Class MainForm
         Me.Controls.Add(Me.grdStatus)
         Me.Controls.Add(Me.lstJobs)
         Me.Controls.Add(Me.btnRunNow)
-        Me.Controls.Add(Me.btnStop)
         Me.Controls.Add(Me.btnStart)
         Me.Name = "MainForm"
         Me.Text = "KantechGatewayApp"
