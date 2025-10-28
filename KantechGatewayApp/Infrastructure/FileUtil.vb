@@ -10,11 +10,11 @@ Namespace KantechGatewayApp.Infrastructure
             Return Path.Combine(root, subPath)
         End Function
 
-        Public Sub SafeMove(src As String, destDir As String)
+        Public Sub SafeMove(src As String, destDir As String, jobKey As String)
             EnsureDir(destDir)
             Dim dest = Path.Combine(destDir, Path.GetFileName(src))
             If File.Exists(dest) Then
-                Dim stamped = Path.Combine(destDir, $"{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:ddMMyyyy_HHmmssfff}{Path.GetExtension(src)}")
+                Dim stamped = Path.Combine(destDir, $"{jobKey}_{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:ddMMyyyy_HHmmssfff}{Path.GetExtension(src)}")
                 File.Move(src, stamped)
             Else
                 File.Move(src, dest)

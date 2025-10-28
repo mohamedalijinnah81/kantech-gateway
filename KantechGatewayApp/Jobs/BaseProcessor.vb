@@ -15,6 +15,7 @@ Namespace KantechGatewayApp.Jobs
         Protected _logSub As String
         Private _schedule As String
         Private _requiredFields As String()
+        Private _jobKey As String
 
         Public Overridable Sub Configure(jobKey As String) Implements IJobProcessor.Configure
             Dim inbound = Infrastructure.JobManager.Config("Root.Inbound")
@@ -29,6 +30,7 @@ Namespace KantechGatewayApp.Jobs
                               .Select(Function(s) s.Trim()).ToArray()
             KantechGatewayApp.Infrastructure.FileUtil.EnsureDir(_source) : KantechGatewayApp.Infrastructure.FileUtil.EnsureDir(_target) : KantechGatewayApp.Infrastructure.FileUtil.EnsureDir(Path.Combine(logs, _logSub))
             _ScheduleName = _schedule
+            _jobKey = jobKey
         End Sub
 
         Protected Overridable Function IsTimeToRun() As Boolean
@@ -96,10 +98,10 @@ Namespace KantechGatewayApp.Jobs
             Next
 
             If err = 0 Then
-                KantechGatewayApp.Infrastructure.FileUtil.SafeMove(filePath, _target)
+                KantechGatewayApp.Infrastructure.FileUtil.SafeMove(filePath, _target, _jobKey)
             Else
                 Dim errDir = Infrastructure.JobManager.Config("Root.Error")
-                KantechGatewayApp.Infrastructure.FileUtil.SafeMove(filePath, KantechGatewayApp.Infrastructure.FileUtil.Combine(errDir, Key))
+                KantechGatewayApp.Infrastructure.FileUtil.SafeMove(filePath, KantechGatewayApp.Infrastructure.FileUtil.Combine(errDir, Key), _jobKey)
             End If
 
             Infrastructure.Logger.Info($"[{Key}] {Path.GetFileName(filePath)} -> OK:{ok} ERR:{err}", _logSub)
