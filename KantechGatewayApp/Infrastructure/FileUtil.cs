@@ -22,15 +22,8 @@ namespace KantechGatewayApp.KantechGatewayApp.Infrastructure
         {
             EnsureDir(destDir);
             string dest = Path.Combine(destDir, Path.GetFileName(src));
-            if (File.Exists(dest))
-            {
-                string stamped = Path.Combine(destDir, $"{jobKey}_{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:ddMMyyyy_HHmmssfff}{Path.GetExtension(src)}");
-                File.Move(src, stamped);
-            }
-            else
-            {
-                File.Move(src, dest);
-            }
+            string stamped = Path.Combine(destDir, $"{jobKey}_{Path.GetFileNameWithoutExtension(src)}_{DateTime.Now:ddMMyyyy_HHmmssfff}{Path.GetExtension(src)}");
+            File.Move(src, stamped);
         }
     }
 }
