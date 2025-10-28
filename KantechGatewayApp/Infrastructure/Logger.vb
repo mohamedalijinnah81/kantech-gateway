@@ -4,7 +4,7 @@ Namespace KantechGatewayApp.Infrastructure
         Private Shared ReadOnly logRoot As String = IO.Path.GetFullPath(System.Configuration.ConfigurationManager.AppSettings("Root.Logs"))
 
         Private Shared Function LogPath(Optional subFolder As String = Nothing) As String
-            Dim fname = If(Boolean.Parse(System.Configuration.ConfigurationManager.AppSettings("Log.RollDaily")), $"app_{Date.Today:yyyyMMdd}.log", "app.log")
+            Dim fname = If(Boolean.Parse(System.Configuration.ConfigurationManager.AppSettings("Log.RollDaily")), $"app_{Date.Today:ddMMyyyy}.log", "app.log")
             Dim logDir = If(String.IsNullOrEmpty(subFolder), logRoot, Path.Combine(logRoot, subFolder))
             Directory.CreateDirectory(logDir)
             Return Path.Combine(logDir, fname)
