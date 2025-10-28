@@ -54,12 +54,14 @@ Namespace KantechGatewayApp.Infrastructure
             t.Columns.Add("LastRun")
             t.Columns.Add("LastResult")
             t.Columns.Add("Schedule")
+            t.Columns.Add("Status")
             For Each kv In _jobs
                 Dim r = t.NewRow()
                 r("Job") = kv.Key
                 r("LastRun") = If(kv.Value.LastRunUtc = Date.MinValue, "", kv.Value.LastRunUtc.ToLocalTime().ToString("dd-MM-yyyy HH:mm:ss"))
                 r("LastResult") = kv.Value.LastResult
                 r("Schedule") = kv.Value.ScheduleName
+                r("Status") = kv.Value.Status
                 t.Rows.Add(r)
             Next
             Return t

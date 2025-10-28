@@ -1,3 +1,4 @@
+Imports System.Drawing
 Imports System.Windows.Forms
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
@@ -39,16 +40,8 @@ Partial Class MainForm
         Me.btnStart.Size = New System.Drawing.Size(90, 30)
         Me.btnStart.TabIndex = 0
         Me.btnStart.Text = "Start"
+        Me.btnStart.ForeColor = Color.White
         Me.btnStart.UseVisualStyleBackColor = True
-        '
-        'btnStop
-        '
-        Me.btnStop.Location = New System.Drawing.Point(108, 12)
-        Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(90, 30)
-        Me.btnStop.TabIndex = 1
-        Me.btnStop.Text = "Stop"
-        Me.btnStop.UseVisualStyleBackColor = True
         '
         'btnRunNow
         '
@@ -57,7 +50,9 @@ Partial Class MainForm
         Me.btnRunNow.Size = New System.Drawing.Size(90, 30)
         Me.btnRunNow.TabIndex = 2
         Me.btnRunNow.Text = "Run Now"
-        Me.btnRunNow.UseVisualStyleBackColor = True
+        Me.btnRunNow.ForeColor = Color.White
+        Me.btnRunNow.BackColor = Color.RoyalBlue
+        Me.btnRunNow.UseVisualStyleBackColor = False
         '
         'lstJobs
         '
@@ -88,7 +83,6 @@ Partial Class MainForm
         Me.Controls.Add(Me.grdStatus)
         Me.Controls.Add(Me.lstJobs)
         Me.Controls.Add(Me.btnRunNow)
-        Me.Controls.Add(Me.btnStop)
         Me.Controls.Add(Me.btnStart)
         Me.Name = "MainForm"
         Me.Text = "KantechGatewayApp"

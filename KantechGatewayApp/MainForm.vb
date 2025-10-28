@@ -2,35 +2,72 @@ Imports System.ComponentModel
 Imports KantechGatewayApp.Infrastructure
 Imports KantechGatewayApp.Jobs
 Imports System.Windows.Forms
+Imports System.Drawing
 
 Public Class MainForm
     Private _mgr As KantechGatewayApp.Infrastructure.JobManager
+    Private _isRunning As Boolean = False
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Text = "KantechGatewayApp"
         _mgr = New KantechGatewayApp.Infrastructure.JobManager()
         _mgr.InitializeFromConfig()
+
+        ' Start automatically on launch
+        StartScheduler()
+
         RefreshGrid()
     End Sub
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
-        _mgr.Start()
-        KantechGatewayApp.Infrastructure.Logger.Info("Scheduler started")
-        RefreshGrid()
+        If _isRunning Then
+            StopScheduler()
+        Else
+            StartScheduler()
+        End If
     End Sub
 
-    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
-        _mgr.[Stop]()
-        KantechGatewayApp.Infrastructure.Logger.Info("Scheduler stopped")
-        RefreshGrid()
+    ' Reusable start logic
+    Private Sub StartScheduler()
+        Try
+            _mgr.Start()
+            _isRunning = True
+            btnStart.Text = "Stop"
+            btnStart.BackColor = Color.Red
+            KantechGatewayApp.Infrastructure.Logger.Info("Scheduler started automatically")
+            RefreshGrid()
+        Catch ex As Exception
+            MessageBox.Show("Error while starting: " & ex.Message)
+        End Try
+    End Sub
+
+    ' Reusable stop logic
+    Private Sub StopScheduler()
+        Try
+            _mgr.Stop()
+            _isRunning = False
+            btnStart.Text = "Start"
+            btnStart.BackColor = Color.Green
+            KantechGatewayApp.Infrastructure.Logger.Info("Scheduler stopped")
+            RefreshGrid()
+        Catch ex As Exception
+            MessageBox.Show("Error while stopping: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub btnRunNow_Click(sender As Object, e As EventArgs) Handles btnRunNow.Click
+        ' Check if scheduler is running
+        If Not _isRunning Then
+            MessageBox.Show("Please start the scheduler first.", "Scheduler Not Running", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Dim jobKey = TryCast(lstJobs.SelectedItem, String)
         If String.IsNullOrEmpty(jobKey) Then
             MessageBox.Show("Select a job in the list.")
             Return
         End If
+
         _mgr.RunNow(jobKey)
         RefreshGrid()
     End Sub

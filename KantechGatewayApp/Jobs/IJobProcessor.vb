@@ -4,6 +4,7 @@ Namespace KantechGatewayApp.Jobs
         ReadOnly Property ScheduleName As String
         ReadOnly Property LastRunUtc As Date
         ReadOnly Property LastResult As String
+        ReadOnly Property Status As String
 
         Sub Configure(jobKey As String)
         Sub MaybeRunBySchedule()
