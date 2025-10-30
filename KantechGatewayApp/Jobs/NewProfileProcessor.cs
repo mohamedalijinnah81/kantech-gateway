@@ -6,6 +6,7 @@ namespace KantechGatewayApp.KantechGatewayApp.Jobs
     {
         protected override void HandleRow(Dictionary<string, string> row)
         {
+            Infrastructure.KantechJobApi.TriggerJobApi(_jobKey, row);
             Infrastructure.Logger.Info($"[NewProfile] emp={row.GetValueOrDefault("employee ID")} name={row.GetValueOrDefault("name")} -> profile created", _logSub);
         }
     }

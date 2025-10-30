@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KantechGatewayApp.KantechGatewayApp.Infrastructure;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -23,6 +24,8 @@ namespace KantechGatewayApp
 
             // Start automatically on launch
             StartScheduler();
+
+            KantechApi.LoginKantech();
 
             RefreshGrid();
         }

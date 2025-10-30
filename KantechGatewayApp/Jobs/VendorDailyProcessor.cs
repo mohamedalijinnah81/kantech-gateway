@@ -6,6 +6,7 @@ namespace KantechGatewayApp.KantechGatewayApp.Jobs
     {
         protected override void HandleRow(Dictionary<string, string> row)
         {
+            Infrastructure.KantechJobApi.TriggerJobApi(_jobKey, row);
             Infrastructure.Logger.Info($"[VendorDaily] emp={row.GetValueOrDefault("employee ID")} card={row.GetValueOrDefault("Card ID")} -> daily access set", _logSub);
         }
     }

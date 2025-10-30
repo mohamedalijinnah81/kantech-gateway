@@ -8,6 +8,8 @@ namespace KantechGatewayApp.KantechGatewayApp.Jobs
         {
             string cardId = row.GetValueOrDefault("Card ID");
             string empId = row.GetValueOrDefault("employee ID");
+
+            Infrastructure.KantechJobApi.TriggerJobApi(_jobKey, row);
             Infrastructure.Logger.Info($"[Deactivate] card={cardId} emp={empId} -> deactivated", _logSub);
         }
     }

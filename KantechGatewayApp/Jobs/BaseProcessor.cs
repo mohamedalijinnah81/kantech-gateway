@@ -19,7 +19,7 @@ namespace KantechGatewayApp.KantechGatewayApp.Jobs
         protected string _logSub;
         private string _schedule;
         private string[] _requiredFields;
-        private string _jobKey;
+        protected string _jobKey;
 
         public virtual void Configure(string jobKey)
         {
